@@ -32,6 +32,7 @@ image_speed = 0
 hovering = false
 cost = 0
 type = 1
+ct = 0 //0 = elemental stuff, 1 = spell, 2 = unit
 </string>
           </argument>
         </arguments>
@@ -60,10 +61,17 @@ type = 1
   type: 1 = water, 2 = fire, 3 = earth
 */
 image_index = cardID
+if cardID &lt; 9 {
+   cost = 0
+   type = 1
+   ct = 0
+}
 if cardID = 9 {
    cost = 1
    type = 2
+   ct = 2
 }
+
 </string>
           </argument>
         </arguments>
