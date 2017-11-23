@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Init
 global.card = noone;
-global.turn = 1
+global.turn = 0
 </string>
           </argument>
         </arguments>
