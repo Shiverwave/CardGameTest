@@ -27,6 +27,7 @@
     <sprite>sprites\sprTally</sprite>
     <sprite>sprites\sprElements</sprite>
     <sprite>sprites\sprHealth</sprite>
+    <sprite>sprites\sprFX</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_board1</background>
@@ -39,6 +40,7 @@
     <object>objects\objController</object>
     <object>objects\objInvokation</object>
     <object>objects\objElements</object>
+    <object>objects\objFX</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmPlay</room>
