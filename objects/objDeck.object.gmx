@@ -324,26 +324,22 @@ if (drawcount &gt; 0 and active = true) {
             <kind>1</kind>
             <string>///Elements
 if id = instance_find(objDeck,1) {
-for(i=0;i&lt;fire;i++) {
-   draw_sprite(sprTally,1,0 + i * 3,0)
-}
-for(i=0;i&lt;water;i++) {
-   draw_sprite(sprTally,0,0 + i * 3,7)
-}
-for(i=0;i&lt;earth;i++) {
-   draw_sprite(sprTally,2,0 + i * 3,14)
-}
+    for(i=0;i&lt;3;i++) {
+       draw_sprite(sprTally,i,195 + i * 26,12)
+       draw_text_transformed(208,12,string(fire),0.9,0.9,0)
+       draw_text_transformed(208 + 26,12,string(water),0.9,0.9,0)
+       draw_text_transformed(208 + 26 + 26,12,string(earth),0.9,0.9,0)
+    
+    }                               
 }
 if id = instance_find(objDeck,0) {
-for(i=0;i&lt;fire;i++) {
-   draw_sprite(sprTally,1,0 + i * 3,room_height-7*3)
-}
-for(i=0;i&lt;water;i++) {
-   draw_sprite(sprTally,0,0 + i * 3,room_height-7*2)
-}
-for(i=0;i&lt;earth;i++) {
-   draw_sprite(sprTally,2,0 + i * 3,room_height-7*1)
-}
+    for(i=0;i&lt;3;i++) {
+       draw_sprite(sprTally,i,195 + i * 26,338)
+       draw_text_transformed(208,338,string(fire),0.9,0.9,0)
+       draw_text_transformed(208 + 26,338,string(water),0.9,0.9,0)
+       draw_text_transformed(208 + 26 + 26,338,string(earth),0.9,0.9,0)
+    
+    } 
 }
 
 </string>
