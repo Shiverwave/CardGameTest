@@ -26,8 +26,19 @@
           <argument>
             <kind>1</kind>
             <string>///Init
+randomize()
 global.card = noone;
 global.turn = 0
+decktest = ds_stack_create()
+for(i=0;i&lt;30;i++) {
+ ds_stack_push(decktest,irandom_range(6,9))
+}
+var str;
+ini_open("deck.ini");
+str = ds_stack_write(decktest);
+ini_write_string("deck", "0", str);
+ds_stack_clear(decktest);
+ini_close();
 </string>
           </argument>
         </arguments>
