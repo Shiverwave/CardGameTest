@@ -180,6 +180,7 @@ if owner = instance_find(objDeck,global.turn).id {
     }
     global.card = noone
     depth = 0
+    audio_play_sound(snd_cardPut, 10, false);
 }
 </string>
           </argument>
@@ -207,6 +208,7 @@ if owner = instance_find(objDeck,global.turn).id {
 if owner = instance_find(objDeck,global.turn).id {
     global.card = id
     depth = -1
+    audio_play_sound(snd_cardPick,10,false)
 }
 </string>
           </argument>
