@@ -8,6 +8,7 @@
     <sound>sound\snd_cardPut</sound>
     <sound>sound\snd_cardPick</sound>
     <sound>sound\snd_turnChange</sound>
+    <sound>sound\mus_pillarsOfCreationSlowTheme</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprCard</sprite>
