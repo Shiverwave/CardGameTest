@@ -274,6 +274,63 @@ if owner = instance_find(objDeck,global.turn).id {
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Card descriptions
+if owner = instance_find(objDeck,global.turn).id {
+    if cardID = 0 {
+       show_message("Droplet: +1 Water")
+    }
+    if cardID = 1 {
+       show_message("Spark: +1 Fire")
+    }
+    if cardID = 2 {
+       show_message("Sprout: +1 Earth")
+    }
+    if cardID = 3 {
+       show_message("Torrent: +3 Water")
+    }
+    if cardID = 4 {
+       show_message("Blaze: +3 Fire")
+    }
+    if cardID = 5 {
+       show_message("Great Oak: +3 Earth")
+    }
+    if cardID = 6 {
+       show_message("Downpour: +2 Water or Draw a Card")
+    }
+    if cardID = 7 {
+       show_message("Flame: +2 Fire or Deal 5 Damage")
+    }
+    if cardID = 8 {
+       show_message("Flowers: +2 Earth or Give a unit a barrier")
+    }
+    if cardID = 9 {
+       show_message("Flaming Skull (Fire): 1/1 - 1")
+    }
+
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>

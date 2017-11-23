@@ -58,8 +58,15 @@ if casting = 7 {
 }
 if casting = 6 {
    with instance_find(objDeck,global.turn) {
-        water += 2
-   }
+        if (show_question("Would you like to draw instead?") == true) {
+           with (instance_find(objDeck,global.turn)) {
+                drawcount += 1
+           }
+        } else {
+          water += 2
+        }
+
+    }
 }
 
 if casting = 8 {

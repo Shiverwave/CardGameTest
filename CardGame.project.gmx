@@ -26,6 +26,7 @@
     <sprite>sprites\sprInvokation</sprite>
     <sprite>sprites\sprTally</sprite>
     <sprite>sprites\sprElements</sprite>
+    <sprite>sprites\sprHealth</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_board1</background>
