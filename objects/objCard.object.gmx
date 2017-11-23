@@ -33,83 +33,6 @@ hovering = false
 cost = 0
 type = 1
 ct = 0 //0 = elemental stuff, 1 = spell, 2 = unit
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Cost and type
-
-/*
-  type: 1 = water, 2 = fire, 3 = earth
-*/
-image_index = cardID
-if cardID &lt; 9 {
-   cost = 0
-   type = 1
-   ct = 0
-}
-if cardID = 9 {
-   cost = 1
-   type = 2
-   ct = 2
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Hand Zone
-//Bottom y1 = 22 x1 = 186 y2 = 338 x2 = 442
-randomize()
-if (global.card = noone and owner.id = instance_find(objDeck,0)) {
-   if x &lt; 186 or x &gt; 442 {
-      x = random_range(186,442)  
-   }
-   if y &lt; 282 or y &gt; 338 {
-      y = random_range(282,338)
-   }
-}
-if (global.card = noone and owner.id = instance_find(objDeck,1)) {
-   if x &lt; 186 or x &gt; 442 {
-      x = random_range(186,442)  
-   }
-   if y &lt; 22 or y &gt; 79 {
-      y = random_range(22,79)
-   }
-}
 
 </string>
           </argument>
@@ -221,13 +144,50 @@ if owner = instance_find(objDeck,global.turn).id {
            }
          owner.earth -= cost
         }
-
-
-        
+     
     }
     depth = 0
     global.card = noone 
     audio_play_sound(snd_cardPut, 10, false);
+}
+randomize()
+if (global.card = noone and owner.id = instance_find(objDeck,1)) {
+   if x &lt; 186 or x &gt; 442 {
+      x = random_range(186,442)  
+   }
+   if y &lt; 22 or y &gt; 79 {
+      y = random_range(22,79)
+   }
+   //Detecting how many times player has missed the hand
+   if global.handMiss = 3 {
+   audio_play_sound(snd_redrop1,10,false)
+   }
+   if global.handMiss = 5 {
+   audio_play_sound(snd_redrop2,10,false)
+   }
+   if global.handMiss = 9 {
+   audio_play_sound(snd_redrop3,10,false)
+   }
+   global.handMiss += 1
+}
+if (global.card = noone and owner.id = instance_find(objDeck,0)) {
+   if x &lt; 186 or x &gt; 442 {
+      x = random_range(186,442)  
+   }
+   if y &lt; 282 or y &gt; 338 {
+      y = random_range(282,338)
+   }
+   //Detecting how many times player has missed the hand
+   if global.handMiss = 3 {
+   audio_play_sound(snd_redrop1,10,false)
+   }
+   if global.handMiss = 5 {
+   audio_play_sound(snd_redrop2,10,false)
+   }
+   if global.handMiss = 9 {
+   audio_play_sound(snd_redrop3,10,false)
+   }
+   global.handMiss += 1
 }
 </string>
           </argument>
