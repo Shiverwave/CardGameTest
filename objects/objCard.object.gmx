@@ -32,6 +32,7 @@ image_speed = 0
 hovering = false
 cost = 0
 type = 1
+ct = 0 //0 = elemental stuff, 1 = spell, 2 = unit
 </string>
           </argument>
         </arguments>
@@ -60,10 +61,17 @@ type = 1
   type: 1 = water, 2 = fire, 3 = earth
 */
 image_index = cardID
+if cardID &lt; 9 {
+   cost = 0
+   type = 1
+   ct = 0
+}
 if cardID = 9 {
    cost = 1
    type = 2
+   ct = 2
 }
+
 </string>
           </argument>
         </arguments>
@@ -180,6 +188,7 @@ if owner = instance_find(objDeck,global.turn).id {
     }
     global.card = noone
     depth = 0
+    audio_play_sound(snd_cardPut, 10, false);
 }
 </string>
           </argument>
@@ -207,6 +216,7 @@ if owner = instance_find(objDeck,global.turn).id {
 if owner = instance_find(objDeck,global.turn).id {
     global.card = id
     depth = -1
+    audio_play_sound(snd_cardPick,10,false)
 }
 </string>
           </argument>

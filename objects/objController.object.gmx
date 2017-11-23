@@ -39,6 +39,8 @@ str = ds_stack_write(decktest);
 ini_write_string("deck", "0", str);
 ds_stack_clear(decktest);
 ini_close();
+audio_play_sound(mus_pillarsOfCreationSlowTheme,9,100)
+audio_sound_gain(mus_pillarsOfCreationSlowTheme, 0.5, 0);
 </string>
           </argument>
         </arguments>
@@ -117,10 +119,12 @@ if (global.card != noone) {
    global.turn = 0
    pile = instance_find(objDeck,0)
    pile.drawcount += 1
+   audio_play_sound(snd_turnChange,10,false)
 } else if global.card = noone and objInvokation.casting = noone{
   global.turn = 1
   pile = instance_find(objDeck,1)
   pile.drawcount += 1
+  audio_play_sound(snd_turnChange,10,false)
 }
 
 </string>

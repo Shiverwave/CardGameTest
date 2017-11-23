@@ -234,6 +234,7 @@ if (ds_stack_size(deck) &gt; 0) and active = true and drawcount &gt; 0 {
    global.card = top_card
    global.card.depth = -1
    drawcount -= 1
+   audio_play_sound(snd_cardPick,10,false)
 }
 </string>
           </argument>
