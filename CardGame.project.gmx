@@ -5,10 +5,17 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\snd_cardPut</sound>
-    <sound>sound\snd_cardPick</sound>
-    <sound>sound\snd_turnChange</sound>
     <sound>sound\mus_pillarsOfCreationSlowTheme</sound>
+    <sounds name="Actions">
+      <sound>sound\snd_cardPut</sound>
+      <sound>sound\snd_cardPick</sound>
+      <sound>sound\snd_turnChange</sound>
+    </sounds>
+    <sounds name="Memes">
+      <sound>sound\snd_redrop2</sound>
+      <sound>sound\snd_redrop3</sound>
+      <sound>sound\snd_redrop1</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprCard</sprite>

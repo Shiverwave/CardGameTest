@@ -41,6 +41,7 @@ ds_stack_clear(decktest);
 ini_close();
 audio_play_sound(mus_pillarsOfCreationSlowTheme,9,100)
 audio_sound_gain(mus_pillarsOfCreationSlowTheme, 0.1, 0);
+global.handMiss = 1
 </string>
           </argument>
         </arguments>

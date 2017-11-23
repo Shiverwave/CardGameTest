@@ -96,18 +96,58 @@ if cardID = 9 {
 randomize()
 if (global.card = noone and owner.id = instance_find(objDeck,0)) {
    if x &lt; 186 or x &gt; 442 {
-      x = random_range(186,442)  
+      x = random_range(186,442)
+      if global.handMiss = 3 {
+       audio_play_sound(snd_redrop1,10,false)
+       }
+       if global.handMiss = 5 {
+       audio_play_sound(snd_redrop2,10,false)
+       }
+       if global.handMiss = 9 {
+       audio_play_sound(snd_redrop3,10,false)
+       }
+       global.handMiss += 0.5   
    }
    if y &lt; 282 or y &gt; 338 {
       y = random_range(282,338)
+      if global.handMiss = 3 {
+       audio_play_sound(snd_redrop1,10,false)
+       }
+       if global.handMiss = 5 {
+       audio_play_sound(snd_redrop2,10,false)
+       }
+       if global.handMiss = 9 {
+       audio_play_sound(snd_redrop3,10,false)
+       }
+       global.handMiss += 0.5 
    }
 }
 if (global.card = noone and owner.id = instance_find(objDeck,1)) {
    if x &lt; 186 or x &gt; 442 {
       x = random_range(186,442)  
+      if global.handMiss = 3 {
+       audio_play_sound(snd_redrop1,10,false)
+       }
+       if global.handMiss = 5 {
+       audio_play_sound(snd_redrop2,10,false)
+       }
+       if global.handMiss = 9 {
+       audio_play_sound(snd_redrop3,10,false)
+       }
+       global.handMiss += 0.5 
    }
    if y &lt; 22 or y &gt; 79 {
       y = random_range(22,79)
+      if global.handMiss = 3 {
+       audio_play_sound(snd_redrop1,10,false)
+       }
+       if global.handMiss = 5 {
+       audio_play_sound(snd_redrop2,10,false)
+       }
+       if global.handMiss = 9 {
+       audio_play_sound(snd_redrop3,10,false)
+       }
+       global.handMiss += 0.5 
    }
 }
 
