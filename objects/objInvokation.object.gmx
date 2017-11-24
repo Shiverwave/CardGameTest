@@ -54,6 +54,24 @@ image_speed = 0
           <argument>
             <kind>1</kind>
             <string>///Card Usages
+if casting = 0 {
+   with instance_find(objDeck,global.turn) {
+       
+       water += 1
+   }
+}
+if casting = 1 {
+   with instance_find(objDeck,global.turn) {
+       
+       fire += 1
+   }
+}
+if casting = 2 {
+   with instance_find(objDeck,global.turn) {
+       
+       earth += 1
+   }
+}
 if casting = 7 {
    with instance_find(objDeck,global.turn) {
         if (show_question("Would you like to deal 3 damage instead?") == true) {
