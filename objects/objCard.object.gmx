@@ -315,7 +315,7 @@ if owner = instance_find(objDeck,global.turn).id {
        show_message("Downpour: +2 Water or Draw a Card")
     }
     if cardID = 7 {
-       show_message("Flame: +2 Fire or Deal 5 Damage")
+       show_message("Flame: +2 Fire or Deal 3 Damage")
     }
     if cardID = 8 {
        show_message("Flowers: +2 Earth or Give a unit a barrier")
