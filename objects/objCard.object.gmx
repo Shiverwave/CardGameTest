@@ -71,6 +71,17 @@ if cardID = 9 {
    type = 2
    ct = 2
 }
+if cardID = 10 {
+   cost = 1
+   type = 3
+   ct = 2
+}
+if cardID = 11 {
+   cost = 1
+   type = 1
+   ct = 2
+}
+
 </string>
           </argument>
         </arguments>
@@ -322,6 +333,12 @@ if owner = instance_find(objDeck,global.turn).id {
     }
     if cardID = 9 {
        show_message("Flaming Skull (Fire): 1/1 - 1")
+    }
+    if cardID = 10 {
+       show_message("Woodland Sprite (Earth): 1/1 - 1")
+    }
+    if cardID = 11 {
+       show_message("Sea Gulper (Water): 1/1 - 1")
     }
 
 

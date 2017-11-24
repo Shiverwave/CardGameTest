@@ -111,6 +111,18 @@ if casting = 9 {
    cardStatD = 1
    cardStatI = 9
 }
+if casting = 10 {
+   global.placing = true
+   cardStatS = 1
+   cardStatD = 1
+   cardStatI = 10
+}
+if casting = 11 {
+   global.placing = true
+   cardStatS = 1
+   cardStatD = 1
+   cardStatI = 11
+}
 casting = noone
 image_index = 0
 </string>
