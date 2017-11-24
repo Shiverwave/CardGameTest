@@ -29,6 +29,7 @@
 cardStatS = 0
 cardStatD = 0
 cardStatI = 0
+cardStatT = 0
 </string>
           </argument>
         </arguments>
@@ -56,6 +57,7 @@ cardStatI = 0
        cardStatS = objInvokation.cardStatS
        cardStatD = objInvokation.cardStatD
        cardStatI = objInvokation.cardStatI
+       cardStatT = objInvokation.cardStatT
        taken = true
        global.placing = false
     }
@@ -65,6 +67,7 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
        cardStatS = objInvokation.cardStatS
        cardStatD = objInvokation.cardStatD
        cardStatI = objInvokation.cardStatI
+       cardStatT = objInvokation.cardStatT
        taken = true
        global.placing = false
     }

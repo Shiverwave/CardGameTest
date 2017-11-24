@@ -241,7 +241,7 @@ if owner = instance_find(objDeck,global.turn).id {
             instance_destroy()
        }
     }
-    if position_meeting(mouse_x,mouse_y,objInvokation) and objInvokation.casting = noone {
+    if position_meeting(mouse_x,mouse_y,objInvokation) and objInvokation.casting = noone and objInvokation.reminvoke &gt; 0{
        if type = 1 and owner.water &gt;= cost {
            with (objInvokation) {
                 invoked = other.cardID

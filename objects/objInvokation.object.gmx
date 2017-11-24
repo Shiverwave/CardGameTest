@@ -26,10 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>invoked = noone
+reminvoke = 1
 casting = noone
 cardStatS = 0
 cardStatD = 0
 cardStatI = 0
+cardStatT = 1
 image_speed = 0
 </string>
           </argument>
@@ -72,6 +74,25 @@ if casting = 2 {
        earth += 1
    }
 }
+if casting = 3 {
+   with instance_find(objDeck,global.turn) {
+       
+       water += 3
+   }
+}
+if casting = 4 {
+   with instance_find(objDeck,global.turn) {
+       
+       fire += 3
+   }
+}
+if casting = 5 {
+   with instance_find(objDeck,global.turn) {
+       
+       earth += 3
+   }
+}
+
 if casting = 7 {
    with instance_find(objDeck,global.turn) {
         if (show_question("Would you like to deal 3 damage instead?") == true) {
@@ -110,20 +131,24 @@ if casting = 9 {
    cardStatS = 1
    cardStatD = 1
    cardStatI = 9
+   cardStatT = 2
 }
 if casting = 10 {
    global.placing = true
    cardStatS = 1
    cardStatD = 1
    cardStatI = 10
+   cardStatT = 3
 }
 if casting = 11 {
    global.placing = true
    cardStatS = 1
    cardStatD = 1
    cardStatI = 11
+   cardStatT = 1
 }
 casting = noone
+reminvoke -= 1
 image_index = 0
 </string>
           </argument>
@@ -179,6 +204,7 @@ image_index = 0
 if alarm[0] &gt; 0 {
    draw_sprite_ext(sprCard,casting,x,y,(alarm[0]/60),(alarm[0]/60),(alarm[0]*6),c_white,1)
 }
+draw_text(x+16,y,string(reminvoke)+" Uses")
 </string>
           </argument>
         </arguments>
