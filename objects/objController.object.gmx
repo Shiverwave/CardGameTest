@@ -42,6 +42,7 @@ ini_close();
 audio_play_sound(mus_pillarsOfCreationSlowTheme,9,100)
 audio_sound_gain(mus_pillarsOfCreationSlowTheme, 0.1, 0);
 global.handMiss = 1
+global.placing = false
 </string>
           </argument>
         </arguments>
@@ -94,6 +95,9 @@ if (global.card != noone) {
           <argument>
             <kind>1</kind>
             <string>draw_text(4,4,"Player: " + string(global.turn + 1))
+if global.placing = true {
+   draw_sprite_ext(sprCard,objInvokation.cardStatI,mouse_x,mouse_y,1,1,0,c_white,0.5)
+}
 </string>
           </argument>
         </arguments>
@@ -116,13 +120,13 @@ if (global.card != noone) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.turn = 1) and global.card = noone and objInvokation.casting = noone{
+            <string>if (global.turn = 1) and global.card = noone and objInvokation.casting = noone and global.placing = false {
    global.turn = 0
    pile = instance_find(objDeck,0)
    pile.drawcount += 1
    audio_play_sound(snd_turnChange,10,false)
    objElements.drawcount = 2
-} else if global.card = noone and objInvokation.casting = noone{
+} else if global.card = noone and objInvokation.casting = noone and global.placing = false{
   global.turn = 1
   pile = instance_find(objDeck,1)
   pile.drawcount += 1

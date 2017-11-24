@@ -349,7 +349,7 @@ if owner = instance_find(objDeck,global.turn).id {
           <argument>
             <kind>1</kind>
             <string>///Pick up card
-if owner = instance_find(objDeck,global.turn).id {
+if owner = instance_find(objDeck,global.turn).id and global.placing = false{
     global.card = id
     depth = -1
     audio_play_sound(snd_cardPick,10,false)

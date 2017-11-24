@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>invoked = noone
 casting = noone
+cardStatS = 0
+cardStatD = 0
+cardStatI = 0
 image_speed = 0
 </string>
           </argument>
@@ -53,8 +56,18 @@ image_speed = 0
             <string>///Card Usages
 if casting = 7 {
    with instance_find(objDeck,global.turn) {
-        fire += 2
-   }
+        if (show_question("Would you like to deal 3 damage instead?") == true) {
+           with (objDeck) {
+                if instance_find(objDeck,global.turn) != self {
+                   hp -= 3
+                }
+           }
+        } else {
+          fire += 2
+        }
+
+    }
+
 }
 if casting = 6 {
    with instance_find(objDeck,global.turn) {
@@ -73,6 +86,12 @@ if casting = 8 {
    with instance_find(objDeck,global.turn) {
         earth += 2
    }
+}
+if casting = 9 {
+   global.placing = true
+   cardStatS = 1
+   cardStatD = 1
+   cardStatI = 9
 }
 casting = noone
 image_index = 0
