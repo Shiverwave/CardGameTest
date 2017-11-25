@@ -20,6 +20,7 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprCard</sprite>
+    <sprite>sprites\sprCardBig</sprite>
     <sprite>sprites\sprGlow</sprite>
     <sprite>sprites\sprCardBack</sprite>
     <sprite>sprites\sprShadow</sprite>
