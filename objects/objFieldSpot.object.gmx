@@ -26,17 +26,110 @@
           <argument>
             <kind>1</kind>
             <string>taken = false
+image_speed = 0
 cardStatS = 0
 cardStatD = 0
 cardStatI = 0
 cardStatT = 0
 attack = false
+barrier = 0
+glide = 0
+rush = 0
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Combat
+randomize()
+if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
+   var blocked = instance_place(x,y-100,objFieldSpot)
+   if blocked.taken = false {
+      with instance_find(objDeck,1) {
+           hp -= other.cardStatD
+      }
+   }
+   if blocked.taken = true and blocked.barrier &gt; 0 {
+      blocked.barrier -= 1
+   } else if blocked.taken = true and blocked.barrier &lt;= 0 {
+        blocked.taken = false
+        blocked.image_speed = 0
+        blocked.cardStatS = 0
+        blocked.cardStatD = 0
+        blocked.cardStatI = 0
+        blocked.cardStatT = 0
+        blocked.attack = false
+        blocked.barrier = 1
+        blocked.glide = 0
+        blocked.rush = 0
+        with (blocked) {
+         for(i=0;i&lt;7;i++) {
+         with instance_create(x,y,objFX) {
+            motion_add(random(360),1)
+            image_index = 1
+         }
+         }
+
+       }   
+   }
+   attack = false
+}
+if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
+   var blocked = instance_place(x,y+100,objFieldSpot)
+   if blocked.taken = false {
+      with instance_find(objDeck,0) {
+           hp -= other.cardStatD
+      }
+   }
+   if blocked.taken = true and blocked.barrier &gt; 0 {
+      blocked.barrier -= 1
+   } else if blocked.taken = true and blocked.barrier &lt;= 0 {
+        blocked.taken = false
+        blocked.image_speed = 0
+        blocked.cardStatS = 0
+        blocked.cardStatD = 0
+        blocked.cardStatI = 0
+        blocked.cardStatT = 0
+        blocked.attack = false
+        blocked.barrier = 1
+        blocked.glide = 0
+        blocked.rush = 0
+        with (blocked) {
+         for(i=0;i&lt;7;i++) {
+         with instance_create(x,y,objFX) {
+            motion_add(random(360),1)
+            image_index = 1
+         }
+         }
+
+       }     
+   }
+
+   attack = false
+
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -62,6 +155,19 @@ attack = false
        taken = true
        attack = false
        global.placing = false
+     if cardStatI = 11 /* or = x, or = x, or = x etc.*/ { //Barrier cards
+       barrier = 1
+    }
+    if cardStatI = 9 /* or = x, or = x, or = x etc.*/ { //Rush cards
+       rush = 1
+    }
+    if cardStatI = 10 /* or = x, or = x, or = x etc.*/ { //Glide cards
+       glide = 1
+    }
+
+    if rush = 1 {
+       attack = true
+    }
     }
 }
 if y &lt; room_height/2 and global.turn = 1 and taken = false {
@@ -73,53 +179,22 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
        taken = true
        attack = false
        global.placing = false
+    if cardStatI = 11 /* or = x, or = x, or = x etc.*/ { //Barrier cards
+       barrier = 1
     }
-}
+    if cardStatI = 9 /* or = x, or = x, or = x etc.*/ { //Rush cards
+       rush = 1
+    }
+    if cardStatI = 10 /* or = x, or = x, or = x etc.*/ { //Glide cards
+       glide = 1
+    }
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Combat
-if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
-   var blocked = instance_place(x,y-100,objFieldSpot)
-   if blocked.taken = false {
-      with instance_find(objDeck,1) {
-           hp -= other.cardStatD
-      }
-   }
-   if blocked.taken = true {
-      blocked.taken = false
-   }
-   attack = false
-}
-if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
-   var blocked = instance_place(x,y+100,objFieldSpot)
-   if blocked.taken = false {
-      with instance_find(objDeck,0) {
-           hp -= other.cardStatD
-      }
-   }
-   if blocked.taken = true {
-      blocked.taken = false
-   }
-   attack = false
+    if rush = 1 {
+       attack = true
+    }
+
+
+    }
 
 }
 
@@ -160,9 +235,16 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
 
 if taken = true {
    draw_sprite(sprCard,cardStatI,x,y)
-}
-if attack = true {
-   draw_sprite(sprGlow,2,x,y)
+   if attack = true {
+      draw_sprite(sprGlow,2,x,y)
+   }
+   if attack = false {
+      draw_sprite(sprFieldSpot,2,x,y)
+   } 
+   if barrier = 1 {
+      draw_sprite(sprFieldSpot,1,x,y)
+   }
+
 }
 </string>
           </argument>

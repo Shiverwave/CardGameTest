@@ -123,8 +123,16 @@ if casting = 6 {
 
 if casting = 8 {
    with instance_find(objDeck,global.turn) {
-        earth += 2
-   }
+        if (show_question("Would you like to get +3 hp instead?") == true) {
+           with (instance_find(objDeck,global.turn)) {
+                hp += 3
+           }
+        } else {
+          earth += 2
+        }
+
+    }
+
 }
 if casting = 9 {
    global.placing = true

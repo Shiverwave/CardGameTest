@@ -300,13 +300,13 @@ if owner = instance_find(objDeck,global.turn).id {
        show_message("Flowers: +2 Earth or Give a unit a barrier")
     }
     if cardID = 9 {
-       show_message("Flaming Skull (Fire): 1/1 - 1")
+       show_message("Flaming Skull (Fire): 1/1 - 1 [Rush (attacks instantly)]")
     }
     if cardID = 10 {
-       show_message("Woodland Sprite (Earth): 1/1 - 1")
+       show_message("Woodland Sprite (Earth): 1/1 - 1 [Glide (can't be blocked)]")
     }
     if cardID = 11 {
-       show_message("Sea Gulper (Water): 1/1 - 1")
+       show_message("Sea Gulper (Water): 1/1 - 1 [Barrier 1 (Takes multiple hits to kill)]")
     }
 
 

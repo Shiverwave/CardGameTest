@@ -387,7 +387,8 @@ if active = true {
           <argument>
             <kind>1</kind>
             <string>///Health 
-draw_sprite_ext(sprHealth,0,x-sprite_width+3,y-sprite_width/2-3,1,hp/35,0,c_white,1)
+draw_sprite(sprHealth,0,x-sprite_width-3,y-sprite_width/2-20)
+draw_text_transformed(x-sprite_width-2,y-sprite_width/2-18,string(hp),0.75,0.75,0)
 </string>
           </argument>
         </arguments>
