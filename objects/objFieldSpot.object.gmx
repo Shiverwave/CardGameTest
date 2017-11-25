@@ -101,7 +101,7 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
    var blocked = instance_place(x,y-100,objFieldSpot)
    if blocked.taken = false {
       with instance_find(objDeck,1) {
-           hp -= cardStatD
+           hp -= other.cardStatD
       }
    }
    if blocked.taken = true {
@@ -112,8 +112,8 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
 if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
    var blocked = instance_place(x,y+100,objFieldSpot)
    if blocked.taken = false {
-      with instance_find(objDeck,1) {
-           hp -= cardStatD
+      with instance_find(objDeck,0) {
+           hp -= other.cardStatD
       }
    }
    if blocked.taken = true {
