@@ -61,14 +61,14 @@ rush = 0
 randomize()
 if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
    var blocked = instance_place(x,y-100,objFieldSpot)
-   if blocked.taken = false {
+   if blocked.taken = false or (blocked.taken = true and glide = true and blocked.glide = false) {
       with instance_find(objDeck,1) {
            hp -= other.cardStatD
       }
    }
-   if blocked.taken = true and blocked.barrier &gt; 0 {
+   if blocked.taken = true and blocked.barrier &gt; 0 and blocked.glide = glide {
       blocked.barrier -= 1
-   } else if blocked.taken = true and blocked.barrier &lt;= 0 {
+   } else if blocked.taken = true and blocked.barrier &lt;= 0 and blocked.glide = glide {
         blocked.taken = false
         blocked.image_speed = 0
         blocked.cardStatS = 0
@@ -93,14 +93,14 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
 }
 if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
    var blocked = instance_place(x,y+100,objFieldSpot)
-   if blocked.taken = false {
+   if blocked.taken = false or (blocked.taken = true and glide = true and blocked.glide = false)  {
       with instance_find(objDeck,0) {
            hp -= other.cardStatD
       }
    }
-   if blocked.taken = true and blocked.barrier &gt; 0 {
+   if blocked.taken = true and blocked.barrier &gt; 0 and blocked.glide = glide {
       blocked.barrier -= 1
-   } else if blocked.taken = true and blocked.barrier &lt;= 0 {
+   } else if blocked.taken = true and blocked.barrier &lt;= 0 and blocked.glide = glide {
         blocked.taken = false
         blocked.image_speed = 0
         blocked.cardStatS = 0
