@@ -30,6 +30,8 @@
     <sprite>sprites\sprElements</sprite>
     <sprite>sprites\sprHealth</sprite>
     <sprite>sprites\sprFX</sprite>
+    <sprite>sprites\sprAttackIndicator</sprite>
+    <sprite>sprites\sprShieldIndicator</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_board1</background>
