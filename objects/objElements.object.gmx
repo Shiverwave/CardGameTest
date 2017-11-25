@@ -56,9 +56,7 @@ if drawcount &gt; 0 {
    with (top_card) {
         cardID = irandom(2)
         owner = instance_find(objDeck,global.turn)
-        if other.drawcount &lt;= 0 {
-           owner.hp -= 1
-        }
+        owner.hp -= 1
    }
    global.card = top_card
    global.card.depth = -1

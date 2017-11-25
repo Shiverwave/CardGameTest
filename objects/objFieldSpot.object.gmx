@@ -61,7 +61,7 @@ rush = 0
 randomize()
 if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
    var blocked = instance_place(x,y-100,objFieldSpot)
-   if blocked.taken = false or (blocked.taken = true and glide = true and blocked.glide = false) {
+   if blocked.taken = false or (blocked.taken = true and glide != blocked.glide) {
       with instance_find(objDeck,1) {
            hp -= other.cardStatD
       }
@@ -83,7 +83,7 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
          for(i=0;i&lt;7;i++) {
          with instance_create(x,y,objFX) {
             motion_add(random(360),1)
-            image_index = 1
+            type = 1
          }
          }
 
@@ -115,7 +115,7 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
          for(i=0;i&lt;7;i++) {
          with instance_create(x,y,objFX) {
             motion_add(random(360),1)
-            image_index = 1
+            type = 1
          }
          }
 

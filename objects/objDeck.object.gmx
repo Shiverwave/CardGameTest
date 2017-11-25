@@ -124,6 +124,7 @@ drawcount = 5
             <kind>1</kind>
             <string>///Health
 hp = 35
+hpc = hp
 </string>
           </argument>
         </arguments>
@@ -197,6 +198,37 @@ if id = instance_find(objDeck,global.turn).id {
           <argument>
             <kind>1</kind>
             <string>///Element Handle
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Health Handle
+randomize()
+if hp &lt; hpc {
+   for(i=hp;i&lt;hpc;i++) {
+      with (instance_create(x+random_range(-10,10),y,objFX)) {
+           type = 2
+           motion_add(-90+random_range(-20,20),1)
+      }
+   }
+   hpc = hp
+}
 </string>
           </argument>
         </arguments>
