@@ -297,7 +297,7 @@ if owner = instance_find(objDeck,global.turn).id {
        show_message("Flame: +2 Fire or Deal 3 Damage")
     }
     if cardID = 8 {
-       show_message("Flowers: +2 Earth or Give a unit a barrier")
+       show_message("Flowers: +2 Earth or Gain 3 hp")
     }
     if cardID = 9 {
        show_message("Flaming Skull (Fire): 1/1 - 1 [Rush (attacks instantly)]")
