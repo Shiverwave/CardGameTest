@@ -127,6 +127,16 @@ if global.placing = true {
    audio_play_sound(snd_turnChange,10,false)
    objElements.drawcount = 2
    objInvokation.reminvoke = 2
+   with (objFieldSpot) {
+       if taken = true {
+            if attack = true {
+               attack = false
+            }
+            if y &gt; room_height/2 {
+               attack = true
+            }
+       }
+   }
 } else if global.card = noone and objInvokation.casting = noone and global.placing = false{
   global.turn = 1
   pile = instance_find(objDeck,1)
@@ -134,6 +144,16 @@ if global.placing = true {
   audio_play_sound(snd_turnChange,10,false)
   objElements.drawcount = 2
   objInvokation.reminvoke = 2
+   with (objFieldSpot) {
+        if taken = true {
+            if attack = true {
+               attack = false
+            }
+            if y &lt; room_height/2 {
+               attack = true
+            }
+       }
+   }
 }
 
 </string>

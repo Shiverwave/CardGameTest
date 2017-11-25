@@ -30,6 +30,7 @@ cardStatS = 0
 cardStatD = 0
 cardStatI = 0
 cardStatT = 0
+attack = false
 </string>
           </argument>
         </arguments>
@@ -59,6 +60,7 @@ cardStatT = 0
        cardStatI = objInvokation.cardStatI
        cardStatT = objInvokation.cardStatT
        taken = true
+       attack = false
        global.placing = false
     }
 }
@@ -69,8 +71,56 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
        cardStatI = objInvokation.cardStatI
        cardStatT = objInvokation.cardStatT
        taken = true
+       attack = false
        global.placing = false
     }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Combat
+if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
+   var blocked = instance_place(x,y-100,objFieldSpot)
+   if blocked.taken = false {
+      with instance_find(objDeck,1) {
+           hp -= cardStatD
+      }
+   }
+   if blocked.taken = true {
+      blocked.taken = false
+   }
+   attack = false
+}
+if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
+   var blocked = instance_place(x,y+100,objFieldSpot)
+   if blocked.taken = false {
+      with instance_find(objDeck,1) {
+           hp -= cardStatD
+      }
+   }
+   if blocked.taken = true {
+      blocked.taken = false
+   }
+   attack = false
+
 }
 
 </string>
@@ -110,6 +160,9 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
 
 if taken = true {
    draw_sprite(sprCard,cardStatI,x,y)
+}
+if attack = true {
+   draw_sprite(sprGlow,2,x,y)
 }
 </string>
           </argument>
