@@ -32,6 +32,8 @@
     <sprite>sprites\sprFX</sprite>
     <sprite>sprites\sprAttackIndicator</sprite>
     <sprite>sprites\sprShieldIndicator</sprite>
+    <sprite>sprites\sprCoin</sprite>
+    <sprite>sprites\sprTimer</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_board1</background>

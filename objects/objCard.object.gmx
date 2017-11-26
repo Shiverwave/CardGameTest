@@ -81,6 +81,11 @@ if cardID = 11 {
    type = 1
    ct = 2
 }
+if cardID = 12 {
+   cost = 2
+   type = 2
+   ct = 2
+}
 
 </string>
           </argument>
@@ -307,6 +312,9 @@ if owner = instance_find(objDeck,global.turn).id {
     }
     if cardID = 11 {
        show_message("Sea Gulper (Water): 1/1 - 1 [Barrier 1 (Takes multiple hits to kill)]")
+    }
+    if cardID = 12 {
+       show_message("Lesser Elemental (Fire): 3/2 - 2")
     }
 
 

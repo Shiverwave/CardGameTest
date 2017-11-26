@@ -28,10 +28,10 @@
             <string>///Init
 randomize()
 global.card = noone;
-global.turn = 0
+global.turn = 2
 decktest = ds_stack_create()
 for(i=0;i&lt;30;i++) {
- ds_stack_push(decktest,irandom_range(3,11))
+ ds_stack_push(decktest,irandom_range(3,12))
 }
 var str;
 ini_open("deck.ini");
@@ -42,6 +42,58 @@ ini_close();
 audio_play_sound(mus_pillarsOfCreationSlowTheme,9,100)
 audio_sound_gain(mus_pillarsOfCreationSlowTheme, 0.1, 0);
 global.placing = false
+turnT = choose(0,1)
+alarm[0] = 120
+turncount = 0
+turntime = 60*60
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.turn = turnT
+alarm[1] = 45
+turntime = 60*60
 </string>
           </argument>
         </arguments>
@@ -75,6 +127,32 @@ if (global.card != noone) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Card Turn
+randomize()
+if alarm[0] &gt; 0 {
+   turnT = choose(0,1)
+}
+turntime -= 1
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -93,10 +171,48 @@ if (global.card != noone) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(4,4,"Player: " + string(global.turn + 1))
+            <string>if global.turn = 1 {
+   draw_text(4,4,"Blues turn ["+string(turncount)+"]")
+}
+if global.turn = 0 {
+   draw_text(4,4,"Reds turn ["+string(turncount)+"]")
+}
+if global.turn = 2 {
+   draw_text(4,4,"Deciding who to start")
+}
 if global.placing = true {
    draw_sprite_ext(sprCard,objInvokation.cardStatI,mouse_x,mouse_y,1,1,0,c_white,0.5)
 }
+if alarm[0] &gt; 0 {
+   draw_sprite(sprCoin,turnT,x+10,y+20)
+} 
+if alarm[1] &gt; 0 {
+   draw_sprite(sprCoin,global.turn,x+10,y+20)
+}
+draw_sprite_ext(sprTimer,0,182,177,turntime/(60*60),1,0,c_white,1)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>game_restart()
 </string>
           </argument>
         </arguments>
@@ -119,42 +235,47 @@ if global.placing = true {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.turn = 1) and global.card = noone and objInvokation.casting = noone and global.placing = false {
-   global.turn = 0
-   pile = instance_find(objDeck,0)
-   pile.drawcount += 1
-   audio_play_sound(snd_turnChange,10,false)
-   objElements.drawcount = 2
-   objInvokation.reminvoke = 2
-   with (objFieldSpot) {
-       if taken = true {
-            if attack = true {
-               attack = false
-            }
-            if y &gt; room_height/2 {
-               attack = true
-            }
+            <string>if (global.turn != 2) {
+    if (global.turn = 1) and global.card = noone and objInvokation.casting = noone and global.placing = false {
+       global.turn = 0
+       turncount += 1
+       turntime = 60*60
+       pile = instance_find(objDeck,0)
+       pile.drawcount += 1
+       audio_play_sound(snd_turnChange,10,false)
+       objElements.drawcount = 2
+       objInvokation.reminvoke = 2
+       with (objFieldSpot) {
+           if taken = true {
+                if attack = true {
+                   attack = false
+                }
+                if y &gt; room_height/2 {
+                   attack = true
+                }
+           }
        }
-   }
-} else if global.card = noone and objInvokation.casting = noone and global.placing = false{
-  global.turn = 1
-  pile = instance_find(objDeck,1)
-  pile.drawcount += 1
-  audio_play_sound(snd_turnChange,10,false)
-  objElements.drawcount = 2
-  objInvokation.reminvoke = 2
-   with (objFieldSpot) {
-        if taken = true {
-            if attack = true {
-               attack = false
-            }
-            if y &lt; room_height/2 {
-               attack = true
-            }
+    } else if global.card = noone and objInvokation.casting = noone and global.placing = false{
+      global.turn = 1
+      turncount += 1
+      turntime = 60*60
+      pile = instance_find(objDeck,1)
+      pile.drawcount += 1
+      audio_play_sound(snd_turnChange,10,false)
+      objElements.drawcount = 2
+      objInvokation.reminvoke = 2
+       with (objFieldSpot) {
+            if taken = true {
+                if attack = true {
+                   attack = false
+                }
+                if y &lt; room_height/2 {
+                   attack = true
+                }
+           }
        }
-   }
+    }
 }
-
 </string>
           </argument>
         </arguments>
