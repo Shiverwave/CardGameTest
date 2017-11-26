@@ -62,14 +62,79 @@ reach = 0
 randomize()
 if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
    var blocked = instance_place(x,y-100,objFieldSpot)
-   if blocked.taken = false or (blocked.taken = true and glide != blocked.glide) {
-      if (reach = 1 and blocked.taken = true) {
-         blocked.taken = false
-      }
+   if blocked.taken = false or (blocked.taken = true and glide != blocked.glide and reach = 0) {
       with instance_find(objDeck,1) {
            hp -= other.cardStatD
       }
      }
+     if (reach = 1 and blocked.taken = true and blocked.glide = 1) {
+        if (blocked.barrier &gt; 0) {
+           blocked.barrier -= 1
+            if (blocked.cardStatS &gt;= cardStatS) {
+              if barrier &gt; 0 {
+                 barrier -= 1
+              } else if barrier &lt;= 0 {
+                taken = false
+                image_speed = 0
+                cardStatS = 0
+                cardStatD = 0
+                cardStatI = 0
+                cardStatT = 0
+                attack = false
+                barrier = 0
+                glide = 0
+                rush = 0
+                with (self) {
+                 for(i=0;i&lt;7;i++) {
+                 with instance_create(x,y,objFX) {
+                    motion_add(random(360),1)
+                    type = 1
+                 }
+                 }
+        
+               }
+              }
+              }  
+        } else {
+        if (blocked.cardStatS &gt;= cardStatS) {
+          if barrier &gt; 0 {
+             barrier -= 1
+          } else if barrier &lt;= 0 {
+            taken = false
+            image_speed = 0
+            cardStatS = 0
+            cardStatD = 0
+            cardStatI = 0
+            cardStatT = 0
+            attack = false
+            barrier = 0
+            glide = 0
+            rush = 0
+            with (self) {
+             for(i=0;i&lt;7;i++) {
+             with instance_create(x,y,objFX) {
+                motion_add(random(360),1)
+                type = 1
+             }
+             }
+    
+           }
+          }
+       } 
+
+            blocked.taken = false
+            blocked.image_speed = 0
+            blocked.cardStatS = 0
+            blocked.cardStatD = 0
+            blocked.cardStatI = 0
+            blocked.cardStatT = 0
+            blocked.attack = false
+            blocked.barrier = 0
+            blocked.glide = 0
+            blocked.rush = 0
+        }
+      }
+
    if blocked.taken = true and blocked.barrier &gt; 0 and blocked.glide = glide {
       blocked.barrier -= 1
       if (blocked.cardStatS &gt;= cardStatS) {
@@ -155,13 +220,77 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
 if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
    var blocked = instance_place(x,y+100,objFieldSpot)
    if blocked.taken = false or (blocked.taken = true and glide != blocked.glide) {
-      if (reach = 1 and blocked.taken = true) {
-         blocked.taken = false
-      }
       with instance_find(objDeck,0) {
            hp -= other.cardStatD
       }
    }
+     if (reach = 1 and blocked.taken = true and blocked.glide = 1) {
+        if (blocked.barrier &gt; 0) {
+           blocked.barrier -= 1
+            if (blocked.cardStatS &gt;= cardStatS) {
+              if barrier &gt; 0 {
+                 barrier -= 1
+              } else if barrier &lt;= 0 {
+                taken = false
+                image_speed = 0
+                cardStatS = 0
+                cardStatD = 0
+                cardStatI = 0
+                cardStatT = 0
+                attack = false
+                barrier = 0
+                glide = 0
+                rush = 0
+                with (self) {
+                 for(i=0;i&lt;7;i++) {
+                 with instance_create(x,y,objFX) {
+                    motion_add(random(360),1)
+                    type = 1
+                 }
+                 }
+        
+               }
+              }
+              }  
+        } else {
+        if (blocked.cardStatS &gt;= cardStatS) {
+          if barrier &gt; 0 {
+             barrier -= 1
+          } else if barrier &lt;= 0 {
+            taken = false
+            image_speed = 0
+            cardStatS = 0
+            cardStatD = 0
+            cardStatI = 0
+            cardStatT = 0
+            attack = false
+            barrier = 0
+            glide = 0
+            rush = 0
+            with (self) {
+             for(i=0;i&lt;7;i++) {
+             with instance_create(x,y,objFX) {
+                motion_add(random(360),1)
+                type = 1
+             }
+             }
+    
+           }
+          }
+       } 
+
+            blocked.taken = false
+            blocked.image_speed = 0
+            blocked.cardStatS = 0
+            blocked.cardStatD = 0
+            blocked.cardStatI = 0
+            blocked.cardStatT = 0
+            blocked.attack = false
+            blocked.barrier = 0
+            blocked.glide = 0
+            blocked.rush = 0
+        }
+      }
 
    if blocked.taken = true and blocked.barrier &gt; 0 and (blocked.glide = glide or blocked.glide = 1 and reach = 1) {
       blocked.barrier -= 1
