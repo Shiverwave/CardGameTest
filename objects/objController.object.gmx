@@ -31,7 +31,7 @@ global.card = noone;
 global.turn = 2
 decktest = ds_stack_create()
 for(i=0;i&lt;30;i++) {
- ds_stack_push(decktest,irandom_range(3,12))
+ ds_stack_push(decktest,irandom_range(3,14))
 }
 var str;
 ini_open("deck.ini");
@@ -47,6 +47,34 @@ alarm[0] = 120
 turncount = 0
 turntime = 60*60
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if turntime &lt; 0 {
+    with instance_find(objDeck,global.turn) {
+         hp -= 1
+    }
+    alarm[2] = 60
+}
 </string>
           </argument>
         </arguments>
@@ -149,6 +177,9 @@ if alarm[0] &gt; 0 {
    turnT = choose(0,1)
 }
 turntime -= 1
+if turntime = 0 {
+   alarm[2] = 60
+}
 </string>
           </argument>
         </arguments>
@@ -242,6 +273,11 @@ draw_sprite_ext(sprTimer,0,182,177,turntime/(60*60),1,0,c_white,1)
        turntime = 60*60
        pile = instance_find(objDeck,0)
        pile.drawcount += 1
+       with (pile) {
+            if ds_stack_empty(deck) = true {
+               hp -= 1
+            }
+       }
        audio_play_sound(snd_turnChange,10,false)
        objElements.drawcount = 2
        objInvokation.reminvoke = 2
@@ -261,6 +297,12 @@ draw_sprite_ext(sprTimer,0,182,177,turntime/(60*60),1,0,c_white,1)
       turntime = 60*60
       pile = instance_find(objDeck,1)
       pile.drawcount += 1
+      with (pile) {
+            if ds_stack_empty(deck) = true {
+               hp -= 1
+            }
+       }
+
       audio_play_sound(snd_turnChange,10,false)
       objElements.drawcount = 2
       objInvokation.reminvoke = 2

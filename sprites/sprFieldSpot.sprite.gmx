@@ -23,5 +23,6 @@
     <frame index="0">images\sprFieldSpot_0.png</frame>
     <frame index="1">images\sprFieldSpot_1.png</frame>
     <frame index="2">images\sprFieldSpot_2.png</frame>
+    <frame index="3">images\sprFieldSpot_3.png</frame>
   </frames>
 </sprite>

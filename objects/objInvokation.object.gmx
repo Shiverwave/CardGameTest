@@ -162,7 +162,20 @@ if casting = 12 {
    cardStatI = 12
    cardStatT = 2
 }
-
+if casting = 13 {
+   global.placing = true
+   cardStatS = 1
+   cardStatD = 2
+   cardStatI = 13
+   cardStatT = 1
+}
+if casting = 14 {
+   global.placing = true
+   cardStatS = 2
+   cardStatD = 2
+   cardStatI = 14
+   cardStatT = 3
+}
 casting = noone
 reminvoke -= 1
 image_index = 0

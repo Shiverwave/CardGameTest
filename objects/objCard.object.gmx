@@ -86,6 +86,18 @@ if cardID = 12 {
    type = 2
    ct = 2
 }
+if cardID = 13 {
+   cost = 2
+   type = 1
+   ct = 2
+}
+if cardID = 14 {
+   cost = 2
+   type = 3
+   ct = 2
+}
+
+
 
 </string>
           </argument>
@@ -205,8 +217,9 @@ if (global.card = noone and owner.id = instance_find(objDeck,1)) {
             <kind>1</kind>
             <string>///Drop the card
 if owner = instance_find(objDeck,global.turn).id {
+   /*
     if position_meeting(mouse_x,mouse_y,owner) {
-       with (objDeck) {
+       with (owner) {
             ds_stack_push(deck,global.card.cardID)
             
        }
@@ -214,6 +227,7 @@ if owner = instance_find(objDeck,global.turn).id {
             instance_destroy()
        }
     }
+    */
     if position_meeting(mouse_x,mouse_y,objInvokation) and objInvokation.casting = noone and objInvokation.reminvoke &gt; 0{
        if type = 1 and owner.water &gt;= cost {
            with (objInvokation) {
@@ -314,8 +328,15 @@ if owner = instance_find(objDeck,global.turn).id {
        show_message("Sea Gulper (Water): 1/1 - 1 [Barrier 1 (Takes multiple hits to kill)]")
     }
     if cardID = 12 {
-       show_message("Lesser Elemental (Fire): 3/2 - 2")
+       show_message("Lesser Fire Elemental (Fire): 3/2 - 2")
     }
+    if cardID = 13 {
+       show_message("Lesser Mind Elemental (Water): 2/1 - 2 (Add a basic water to the top of your opponenets deck)")
+    }
+    if cardID = 14 {
+       show_message("Jungle Tarantula (Earth): 2/2 - 2 [Reach (kills gliders safely)]")
+    }
+
 
 
 }
