@@ -95,7 +95,6 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
              }
     
            }
-
           }
           }
    } else if blocked.taken = true and blocked.barrier &lt;= 0 and blocked.glide = glide {
@@ -122,7 +121,6 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
              }
     
            }
-
           }
        } 
         blocked.taken = false
@@ -143,7 +141,14 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
          }
          }
 
-       }  
+       }
+        if cardStatI = 15 {
+              with instance_create(x,y,objCard) {
+                   owner = instance_find(objDeck,0)
+                   cardID = 15
+              }
+           }
+  
    }
    attack = false
 }
@@ -232,7 +237,14 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
          }
          }
 
-       }   
+       } 
+       if cardStatI = 15 {
+              with instance_create(x,y,objCard) {
+                   owner = instance_find(objDeck,1)
+                   cardID = 15
+              }
+           }
+  
    }
    attack = false
 

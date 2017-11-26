@@ -96,6 +96,13 @@ if cardID = 14 {
    type = 3
    ct = 2
 }
+if cardID = 15 {
+   cost = 4
+   type = 3
+   ct = 2
+}
+
+
 
 
 
@@ -335,6 +342,9 @@ if owner = instance_find(objDeck,global.turn).id {
     }
     if cardID = 14 {
        show_message("Jungle Tarantula (Earth): 2/2 - 2 [Reach (kills gliders safely)]")
+    }
+    if cardID = 15 {
+       show_message("Brood Swarm( Earth): 1/5 - 4 (When this kills a unit add a brood swarm to your hand)")
     }
 
 
