@@ -167,12 +167,13 @@ stackcount = ds_stack_size(deck)
           <argument>
             <kind>1</kind>
             <string>///Turn handling
+if instance_exists(instance_find(objDeck,global.turn)) {
 if id = instance_find(objDeck,global.turn).id {
    active = true
 } else {
   active = false
 }
-
+}
 
 </string>
           </argument>
