@@ -102,8 +102,13 @@ if cardID = 15 {
    ct = 2
 }
 if cardID = 16 {
-   cost = 4
+   cost = 5
    type = 1
+   ct = 2
+}
+if cardID = 17 {
+   cost = 4
+   type = 2
    ct = 2
 }
 
@@ -355,7 +360,9 @@ if owner = instance_find(objDeck,global.turn).id {
     if cardID = 16 {
        show_message("Mana Wyrm (Water): 3/3 - 4 (At the start of your turn gain +1 water)")
     }
-
+    if cardID = 17 {
+       show_message("Infernal Elemental (Fire): 5/3 - 4 [Combustive (If this dies deal damage equal to its damage to the enemy)]")
+    }
 
 
 }

@@ -30,9 +30,83 @@ randomize()
 global.card = noone;
 global.turn = 2
 decktest = ds_stack_create()
-for(i=0;i&lt;30;i++) {
- ds_stack_push(decktest,irandom_range(3,16))
+deck1 = choose(0,1,2) //0 = water deck, 1 = fire deck, 2 = earth deck
+if deck1 = 0 { //Rising Tides Structure Deck
+for(i=0;i&lt;14;i++) {
+ if i = 0 or i = 1 or i = 2 {
+    ds_stack_push(decktest,3) //irandom_range(3,17)
+    ds_stack_push(decktest,3) //irandom_range(3,17)
+ }
+ if i = 3 or i = 4 or i = 5 {
+    ds_stack_push(decktest,6) //irandom_range(3,17)
+    ds_stack_push(decktest,6) //irandom_range(3,17)
+ }
+ if i = 6 or i = 7 or i = 8 {
+    ds_stack_push(decktest,11) //irandom_range(3,17)
+    ds_stack_push(decktest,11)
+ }
+ if i = 9 or i = 10 or i = 11 {
+    ds_stack_push(decktest,13) //irandom_range(3,17)
+    ds_stack_push(decktest,13)
+ }
+ if i = 12 or i = 13 or i = 14 {
+    ds_stack_push(decktest,16) //irandom_range(3,17)
+    ds_stack_push(decktest,16)
+ }
+
 }
+}
+if deck1 = 1 { //Raging Flames Structure Deck
+for(i=0;i&lt;14;i++) {
+ if i = 0 or i = 1 or i = 2 {
+    ds_stack_push(decktest,4) //irandom_range(3,17)
+    ds_stack_push(decktest,4) //irandom_range(3,17)
+ }
+ if i = 3 or i = 4 or i = 5 {
+    ds_stack_push(decktest,7) //irandom_range(3,17)
+    ds_stack_push(decktest,7) //irandom_range(3,17)
+ }
+ if i = 6 or i = 7 or i = 8 {
+    ds_stack_push(decktest,9) //irandom_range(3,17)
+    ds_stack_push(decktest,9)
+ }
+ if i = 9 or i = 10 or i = 11 {
+    ds_stack_push(decktest,12) //irandom_range(3,17)
+    ds_stack_push(decktest,12)
+ }
+ if i = 12 or i = 13 or i = 14 {
+    ds_stack_push(decktest,17) //irandom_range(3,17)
+    ds_stack_push(decktest,17)
+ }
+
+}
+}
+if deck1 = 2 { //Unbreaking Grounds Structure Deck
+for(i=0;i&lt;14;i++) {
+ if i = 0 or i = 1 or i = 2 {
+    ds_stack_push(decktest,5) //irandom_range(3,17)
+    ds_stack_push(decktest,5) //irandom_range(3,17)
+ }
+ if i = 3 or i = 4 or i = 5 {
+    ds_stack_push(decktest,8) //irandom_range(3,17)
+    ds_stack_push(decktest,8) //irandom_range(3,17)
+ }
+ if i = 6 or i = 7 or i = 8 {
+    ds_stack_push(decktest,10) //irandom_range(3,17)
+    ds_stack_push(decktest,10)
+ }
+ if i = 9 or i = 10 or i = 11 {
+    ds_stack_push(decktest,14) //irandom_range(3,17)
+    ds_stack_push(decktest,14)
+ }
+ if i = 12 or i = 13 or i = 14 {
+    ds_stack_push(decktest,15) //irandom_range(3,17)
+    ds_stack_push(decktest,15)
+ }
+
+}
+}
+
 var str;
 ini_open("deck.ini");
 str = ds_stack_write(decktest);

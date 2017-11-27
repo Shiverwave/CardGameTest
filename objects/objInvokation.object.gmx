@@ -178,7 +178,7 @@ if casting = 14 {
 }
 if casting = 15 {
    global.placing = true
-   cardStatS = 5
+   cardStatS = 4
    cardStatD = 1
    cardStatI = 15
    cardStatT = 3
@@ -189,6 +189,13 @@ if casting = 16 {
    cardStatD = 3
    cardStatI = 16
    cardStatT = 1
+}
+if casting = 17 {
+   global.placing = true
+   cardStatS = 3
+   cardStatD = 5
+   cardStatI = 17
+   cardStatT = 2
 }
 
 casting = noone

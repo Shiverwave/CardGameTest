@@ -36,6 +36,7 @@ barrier = 0
 glide = 0
 rush = 0
 reach = 0
+combust = 0
 </string>
           </argument>
         </arguments>
@@ -59,6 +60,19 @@ reach = 0
           <argument>
             <kind>1</kind>
             <string>if taken = false {
+if combust = 1 {
+   if y&gt;room_height/2 {
+      with instance_find(objDeck,1) {
+           hp -= other.cardStatD
+      }
+   } else if y&lt;room_height/2 {
+     with instance_find(objDeck,0) {
+           hp -= other.cardStatD
+      }
+
+   }
+   combust = 0
+}
 taken = false
 image_speed = 0
 cardStatS = 0
@@ -70,6 +84,7 @@ barrier = 0
 glide = 0
 rush = 0
 reach = 0
+combust = 0
 }
 </string>
           </argument>
@@ -149,15 +164,6 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
                  barrier -= 1
               } else if barrier &lt;= 0 {
                 taken = false
-                image_speed = 0
-                cardStatS = 0
-                cardStatD = 0
-                cardStatI = 0
-                cardStatT = 0
-                attack = false
-                barrier = 0
-                glide = 0
-                rush = 0
                 with (self) {
                  for(i=0;i&lt;7;i++) {
                  with instance_create(x,y,objFX) {
@@ -175,15 +181,6 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
              barrier -= 1
           } else if barrier &lt;= 0 {
             taken = false
-            image_speed = 0
-            cardStatS = 0
-            cardStatD = 0
-            cardStatI = 0
-            cardStatT = 0
-            attack = false
-            barrier = 0
-            glide = 0
-            rush = 0
             with (self) {
              for(i=0;i&lt;7;i++) {
              with instance_create(x,y,objFX) {
@@ -195,17 +192,7 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
            }
           }
        } 
-
-            blocked.taken = false
-            blocked.image_speed = 0
-            blocked.cardStatS = 0
-            blocked.cardStatD = 0
-            blocked.cardStatI = 0
-            blocked.cardStatT = 0
-            blocked.attack = false
-            blocked.barrier = 0
-            blocked.glide = 0
-            blocked.rush = 0
+         blocked.taken = false
         }
       }
 
@@ -216,15 +203,6 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
              barrier -= 1
           } else if barrier &lt;= 0 {
             taken = false
-            image_speed = 0
-            cardStatS = 0
-            cardStatD = 0
-            cardStatI = 0
-            cardStatT = 0
-            attack = false
-            barrier = 0
-            glide = 0
-            rush = 0
             with (self) {
              for(i=0;i&lt;7;i++) {
              with instance_create(x,y,objFX) {
@@ -242,15 +220,6 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
              barrier -= 1
           } else if barrier &lt;= 0 {
             taken = false
-            image_speed = 0
-            cardStatS = 0
-            cardStatD = 0
-            cardStatI = 0
-            cardStatT = 0
-            attack = false
-            barrier = 0
-            glide = 0
-            rush = 0
             with (self) {
              for(i=0;i&lt;7;i++) {
              with instance_create(x,y,objFX) {
@@ -263,15 +232,6 @@ if y &gt; room_height/2 and global.turn = 0 and taken = true and attack = true {
           }
        } 
         blocked.taken = false
-        blocked.image_speed = 0
-        blocked.cardStatS = 0
-        blocked.cardStatD = 0
-        blocked.cardStatI = 0
-        blocked.cardStatT = 0
-        blocked.attack = false
-        blocked.barrier = 0
-        blocked.glide = 0
-        blocked.rush = 0
         with (blocked) {
          for(i=0;i&lt;7;i++) {
          with instance_create(x,y,objFX) {
@@ -306,15 +266,6 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
                  barrier -= 1
               } else if barrier &lt;= 0 {
                 taken = false
-                image_speed = 0
-                cardStatS = 0
-                cardStatD = 0
-                cardStatI = 0
-                cardStatT = 0
-                attack = false
-                barrier = 0
-                glide = 0
-                rush = 0
                 with (self) {
                  for(i=0;i&lt;7;i++) {
                  with instance_create(x,y,objFX) {
@@ -332,15 +283,6 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
              barrier -= 1
           } else if barrier &lt;= 0 {
             taken = false
-            image_speed = 0
-            cardStatS = 0
-            cardStatD = 0
-            cardStatI = 0
-            cardStatT = 0
-            attack = false
-            barrier = 0
-            glide = 0
-            rush = 0
             with (self) {
              for(i=0;i&lt;7;i++) {
              with instance_create(x,y,objFX) {
@@ -354,15 +296,6 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
        } 
 
             blocked.taken = false
-            blocked.image_speed = 0
-            blocked.cardStatS = 0
-            blocked.cardStatD = 0
-            blocked.cardStatI = 0
-            blocked.cardStatT = 0
-            blocked.attack = false
-            blocked.barrier = 0
-            blocked.glide = 0
-            blocked.rush = 0
         }
       }
 
@@ -373,15 +306,6 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
              barrier -= 1
           } else if barrier &lt;= 0 {
             taken = false
-            image_speed = 0
-            cardStatS = 0
-            cardStatD = 0
-            cardStatI = 0
-            cardStatT = 0
-            attack = false
-            barrier = 0
-            glide = 0
-            rush = 0
             with (self) {
              for(i=0;i&lt;7;i++) {
              with instance_create(x,y,objFX) {
@@ -401,15 +325,6 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
              barrier -= 1
           } else if barrier &lt;= 0  {
             taken = false
-            image_speed = 0
-            cardStatS = 0
-            cardStatD = 0
-            cardStatI = 0
-            cardStatT = 0
-            attack = false
-            barrier = 0
-            glide = 0
-            rush = 0
             with (self) {
              for(i=0;i&lt;7;i++) {
              with instance_create(x,y,objFX) {
@@ -423,15 +338,6 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
           }
        }   
         blocked.taken = false
-        blocked.image_speed = 0
-        blocked.cardStatS = 0
-        blocked.cardStatD = 0
-        blocked.cardStatI = 0
-        blocked.cardStatT = 0
-        blocked.attack = false
-        blocked.barrier = 0
-        blocked.glide = 0
-        blocked.rush = 0
         with (blocked) {
          for(i=0;i&lt;7;i++) {
          with instance_create(x,y,objFX) {
@@ -488,10 +394,10 @@ if y &gt; room_height/2 and global.turn = 0 and taken = false {
             ds_stack_push(deck,0)
           }
           }
-    if cardStatI = 11 /* or = x, or = x, or = x etc.*/ { //Barrier cards
+    if cardStatI = 11 or cardStatI = 16 /* or = x, or = x, or = x etc.*/ { //Barrier cards
        barrier = 1
     }
-    if cardStatI = 9 /* or = x, or = x, or = x etc.*/ { //Rush cards
+    if cardStatI = 9 or cardStatI = 15 /* or = x, or = x, or = x etc.*/ { //Rush cards
        rush = 1
     }
     if cardStatI = 10 /* or = x, or = x, or = x etc.*/ { //Glide cards
@@ -503,7 +409,9 @@ if y &gt; room_height/2 and global.turn = 0 and taken = false {
     if rush = 1 {
        attack = true
     }
-
+    if cardStatI = 17 { //Combustive cards
+       combust = 1
+    }
     }
 }
 if y &lt; room_height/2 and global.turn = 1 and taken = false {
@@ -520,10 +428,10 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
           ds_stack_push(deck,0)
        }
     }
-    if cardStatI = 11 /* or = x, or = x, or = x etc.*/ { //Barrier cards
+    if cardStatI = 11 or cardStatI = 16 /* or = x, or = x, or = x etc.*/ { //Barrier cards
        barrier = 1
     }
-    if cardStatI = 9 /* or = x, or = x, or = x etc.*/ { //Rush cards
+    if cardStatI = 9 or cardStatI = 15 /* or = x, or = x, or = x etc.*/ { //Rush cards
        rush = 1
     }
     if cardStatI = 10 /* or = x, or = x, or = x etc.*/ { //Glide cards
@@ -531,6 +439,9 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
     }
     if cardStatI = 14 { //Reach cards
        reach = 1
+    }
+    if cardStatI = 17 { //Combustive cards
+       combust = 1
     }
     if rush = 1 {
        attack = true
@@ -590,7 +501,7 @@ if taken = true {
    if glide = 1 {
       draw_sprite(sprFieldSpot,3,x,y)
    }
-
+   draw_text_transformed(x-10,y-26,string(cardStatD) + "/" +string(cardStatS),0.6,0.6,0)
 }
 </string>
           </argument>
