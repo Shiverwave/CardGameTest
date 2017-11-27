@@ -282,6 +282,9 @@ if (ds_stack_size(deck) &gt; 0) and active = true and drawcount &gt; 0 {
    with (top_card) {
         cardID = other.card
         owner = other.id
+        if is_real(cardID) = false {
+           cardID = 0
+        }
    }
    global.card = top_card
    global.card.depth = -1

@@ -81,7 +81,7 @@ for(i=0;i&lt;14;i++) {
 
 }
 }
-if deck1 = 2 { //Unbreaking Grounds Structure Deck
+if deck1 = 2 { //Untamed Grounds Structure Deck
 for(i=0;i&lt;14;i++) {
  if i = 0 or i = 1 or i = 2 {
     ds_stack_push(decktest,5) //irandom_range(3,17)
