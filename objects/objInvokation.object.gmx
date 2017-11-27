@@ -183,6 +183,13 @@ if casting = 15 {
    cardStatI = 15
    cardStatT = 3
 }
+if casting = 16 {
+   global.placing = true
+   cardStatS = 3
+   cardStatD = 3
+   cardStatI = 16
+   cardStatT = 1
+}
 
 casting = noone
 reminvoke -= 1

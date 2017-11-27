@@ -41,6 +41,80 @@ reach = 0
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if taken = false {
+taken = false
+image_speed = 0
+cardStatS = 0
+cardStatD = 0
+cardStatI = 0
+cardStatT = 0
+attack = false
+barrier = 0
+glide = 0
+rush = 0
+reach = 0
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (taken = true and cardStatI = 16 and keyboard_check_pressed(vk_space)and global.card = noone and objInvokation.casting = noone and global.placing = false) {
+   if y&gt;room_height/2 {
+          if global.turn = 0 {
+          with instance_find(objDeck,0) {
+               water += 1
+          }
+      }
+   }
+   if y&lt;room_height/2 {
+      if global.turn = 1 {
+      with instance_find(objDeck,1) {
+           water += 1
+      }
+      }
+   }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
@@ -402,11 +476,11 @@ if y &lt; room_height/2 and global.turn = 1 and taken = true and attack = true {
             <string>///Card Placement
 if y &gt; room_height/2 and global.turn = 0 and taken = false {
     if global.placing = true {
+       taken = true
        cardStatS = objInvokation.cardStatS
        cardStatD = objInvokation.cardStatD
        cardStatI = objInvokation.cardStatI
        cardStatT = objInvokation.cardStatT
-       taken = true
        attack = false
        global.placing = false
        if cardStatI = 13 {
@@ -434,11 +508,11 @@ if y &gt; room_height/2 and global.turn = 0 and taken = false {
 }
 if y &lt; room_height/2 and global.turn = 1 and taken = false {
     if global.placing = true {
+       taken = true
        cardStatS = objInvokation.cardStatS
        cardStatD = objInvokation.cardStatD
        cardStatI = objInvokation.cardStatI
        cardStatT = objInvokation.cardStatT
-       taken = true
        attack = false
        global.placing = false
        if cardStatI = 13 {

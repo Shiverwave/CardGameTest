@@ -49,9 +49,6 @@ for(i=0;i&lt;30;i++) {
 }
 
 //needs to create all cards in a list, shuffle, then push to the stack
-if id = instance_find(objDeck,global.turn).id {
-   active = true
-}
 
 </string>
           </argument>
@@ -331,7 +328,8 @@ if (stackcount &gt; 20) {
 draw_self()
 draw_text(x-12,y-14,stackcount)
 if (drawcount &gt; 0 and active = true) {
-   draw_text(room_width/2 - 24,room_height/2,"Draw x"+string(drawcount))
+   draw_sprite(sprTally,3,room_width/2 - 26,room_height/2+12)
+   draw_text(room_width/2 - 14,room_height/2+10,"x"+string(drawcount))
 }
 
 </string>
@@ -423,12 +421,12 @@ draw_sprite(sprHealth,0,x-8,y-sprite_width/2-24)
 draw_text_transformed(x-6,y-sprite_width/2-20,string(hp),0.75,0.75,0)
 if instance_find(objDeck,0) = self {
    if hp &lt;= 0 {
-      draw_text(75,75,"BLUE WINS!")
+      draw_text(room_width/2-string_length("BLUE WINS!"),room_height/2-16,"BLUE WINS!")
    }
 }
 if instance_find(objDeck,1) = self {
    if hp &lt;= 0 {
-      draw_text(75,75,"RED WINS!")
+      draw_text(room_width/2-string_length("RED WINS!"),room_height/2+16,"RED WINS!")
    }
 }
 

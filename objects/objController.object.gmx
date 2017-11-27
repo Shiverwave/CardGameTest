@@ -31,7 +31,7 @@ global.card = noone;
 global.turn = 2
 decktest = ds_stack_create()
 for(i=0;i&lt;30;i++) {
- ds_stack_push(decktest,irandom_range(3,15))
+ ds_stack_push(decktest,irandom_range(3,16))
 }
 var str;
 ini_open("deck.ini");
