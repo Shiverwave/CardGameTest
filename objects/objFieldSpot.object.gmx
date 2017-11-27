@@ -74,7 +74,6 @@ if combust = 1 {
    combust = 0
 }
 taken = false
-image_speed = 0
 cardStatS = 0
 cardStatD = 0
 cardStatI = 0
@@ -490,7 +489,9 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
 if taken = true {
    draw_sprite(sprCard,cardStatI,x,y)
    if attack = true {
-      draw_sprite(sprGlow,2,x,y)
+      draw_sprite(sprFieldSpot,0,x,y)
+      //this is obviously making lots of objects pls fix me lazy
+      instance_create(x,y+24,objIndicator)
    }
    if attack = false {
       draw_sprite(sprFieldSpot,2,x,y)

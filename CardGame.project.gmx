@@ -47,6 +47,7 @@
     <object>objects\objInvokation</object>
     <object>objects\objElements</object>
     <object>objects\objFX</object>
+    <object>objects\objIndicator</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmPlay</room>
