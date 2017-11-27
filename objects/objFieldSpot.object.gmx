@@ -37,6 +37,7 @@ glide = 0
 rush = 0
 reach = 0
 combust = 0
+decay = 0
 </string>
           </argument>
         </arguments>
@@ -84,6 +85,7 @@ glide = 0
 rush = 0
 reach = 0
 combust = 0
+decay = 0
 }
 </string>
           </argument>
@@ -413,6 +415,15 @@ if y &gt; room_height/2 and global.turn = 0 and taken = false {
     }
     }
 }
+if taken = true and global.spell = true and y &gt; room_height/2 and global.turn = 0 {
+   if global.spellID = 18 and cardStatT = 2 {
+      cardStatD = cardStatD * 2
+      cardStatS = cardStatS * 2
+      global.spell = false
+      global.spellID = 0
+      decay = 2
+   }
+}
 if y &lt; room_height/2 and global.turn = 1 and taken = false {
     if global.placing = true {
        taken = true
@@ -450,6 +461,16 @@ if y &lt; room_height/2 and global.turn = 1 and taken = false {
     }
 
 }
+if taken = true and global.spell = true and y &lt; room_height/2 and global.turn = 1 {
+   if global.spellID = 18 and cardStatT = 2 {
+      cardStatD = cardStatD * 2
+      cardStatS = cardStatS * 2
+      global.spell = false
+      global.spellID = 0
+      decay = 2
+   }
+}
+
 
 </string>
           </argument>

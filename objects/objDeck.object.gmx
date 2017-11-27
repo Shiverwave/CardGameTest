@@ -3,7 +3,7 @@
   <spriteName>sprCardBack</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>2</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -167,7 +167,7 @@ stackcount = ds_stack_size(deck)
           <argument>
             <kind>1</kind>
             <string>///Turn handling
-if instance_exists(instance_find(objDeck,global.turn)) {
+if global.turn &lt; 2 {
 if id = instance_find(objDeck,global.turn).id {
    active = true
 } else {
@@ -396,10 +396,21 @@ if id = instance_find(objDeck,0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Turn
-if active = true {
-   draw_text_color(x-6,y-12,"X",c_green,c_green,c_green,c_green,1)
+            <string>///Health 
+draw_sprite(sprHealth,0,x-8,y-sprite_width/2-24)
+draw_text_transformed(x-6,y-sprite_width/2-20,string(hp),0.75,0.75,0)
+if instance_find(objDeck,0) = self {
+   if hp &lt;= 0 {
+      draw_text(room_width/2-string_length("BLUE WINS!"),room_height/2-16,"BLUE WINS!")
+   }
 }
+if instance_find(objDeck,1) = self {
+   if hp &lt;= 0 {
+      draw_text(room_width/2-string_length("RED WINS!"),room_height/2+16,"RED WINS!")
+   }
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -420,21 +431,10 @@ if active = true {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Health 
-draw_sprite(sprHealth,0,x-8,y-sprite_width/2-24)
-draw_text_transformed(x-6,y-sprite_width/2-20,string(hp),0.75,0.75,0)
-if instance_find(objDeck,0) = self {
-   if hp &lt;= 0 {
-      draw_text(room_width/2-string_length("BLUE WINS!"),room_height/2-16,"BLUE WINS!")
-   }
+            <string>///Turn
+if active = true {
+   draw_sprite(sprCardBack,3,x,y)
 }
-if instance_find(objDeck,1) = self {
-   if hp &lt;= 0 {
-      draw_text(room_width/2-string_length("RED WINS!"),room_height/2+16,"RED WINS!")
-   }
-}
-
-
 </string>
           </argument>
         </arguments>

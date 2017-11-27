@@ -111,6 +111,11 @@ if cardID = 17 {
    type = 2
    ct = 2
 }
+if cardID = 18 {
+   cost = 3
+   type = 2
+   ct = 2
+}
 
 
 
@@ -246,7 +251,7 @@ if owner = instance_find(objDeck,global.turn).id {
        }
     }
     */
-    if position_meeting(mouse_x,mouse_y,objInvokation) and objInvokation.casting = noone and objInvokation.reminvoke &gt; 0{
+    if position_meeting(mouse_x,mouse_y,objInvokation) and objInvokation.casting = noone and objInvokation.reminvoke &gt; 0 and global.spell = false{
        if type = 1 and owner.water &gt;= cost {
            with (objInvokation) {
                 invoked = other.cardID
@@ -284,6 +289,22 @@ if owner = instance_find(objDeck,global.turn).id {
     depth = 0
     global.card = noone 
     audio_play_sound(snd_cardPut, 10, false);
+    if position_meeting(mouse_x,mouse_y,objElements) and objElements.drawcount &gt; 0{
+       with (global.card) {
+            instance_destroy()
+       }
+      instance_destroy()
+       with (objElements) {
+             top_card = instance_create(x,y,objCard)
+               with (top_card) {
+                    other.drawcount -= 1
+                    cardID = irandom(2)
+                    owner = instance_find(objDeck,global.turn)
+               }
+            
+                
+           }
+        }
 }
 </string>
           </argument>
@@ -362,6 +383,9 @@ if owner = instance_find(objDeck,global.turn).id {
     }
     if cardID = 17 {
        show_message("Infernal Elemental (Fire): 5/3 - 4 [Combustive (If this dies deal damage equal to its damage to the enemy)]")
+    }
+    if cardID = 18 {
+       show_message("Sorcery: Raging Inferno (Fire): 4 - Target fire unit you own gains 2x its stats but dies at the start of your turn")
     }
 
 
