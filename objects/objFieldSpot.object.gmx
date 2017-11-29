@@ -517,7 +517,7 @@ if taken = true {
    if attack = false {
       draw_sprite(sprFieldSpot,2,x,y)
    } 
-   if barrier = 1 {
+   if barrier &gt; 1 {
       draw_sprite(sprFieldSpot,1,x,y)
    }
    if glide = 1 {

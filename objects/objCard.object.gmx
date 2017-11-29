@@ -114,8 +114,20 @@ if cardID = 17 {
 if cardID = 18 {
    cost = 3
    type = 2
-   ct = 2
+   ct = 1
 }
+if cardID = 19 {
+   cost = 3
+   type = 3
+   ct = 1
+}
+if cardID = 20 {
+   cost = 3
+   type = 1
+   ct = 1
+}
+
+
 
 
 
@@ -252,6 +264,13 @@ if owner = instance_find(objDeck,global.turn).id {
     }
     */
     if position_meeting(mouse_x,mouse_y,objInvokation) and objInvokation.casting = noone and objInvokation.reminvoke &gt; 0 and global.spell = false{
+       //Incantations
+       if objInvokation.inc = 1 {
+          with (instance_find(objDeck,global.turn)) {
+               ds_stack_pop(deck)
+          }
+          objInvokation.inc = 0          
+       }
        if type = 1 and owner.water &gt;= cost {
            with (objInvokation) {
                 invoked = other.cardID
@@ -282,8 +301,6 @@ if owner = instance_find(objDeck,global.turn).id {
            }
          owner.earth -= cost
         }
-
-
         
     }
     depth = 0
@@ -373,7 +390,7 @@ if owner = instance_find(objDeck,global.turn).id {
        show_message("Lesser Mind Elemental (Water): 2/1 - 2 (Add a basic water to the top of your opponenets deck)")
     }
     if cardID = 14 {
-       show_message("Jungle Tarantula (Earth): 2/2 - 2 [Reach (kills gliders safely)]")
+       show_message("Jungle Weaver (Earth): 2/2 - 2 [Reach (kills gliders safely)]")
     }
     if cardID = 15 {
        show_message("Brood Swarm (Earth): 1/5 - 4 (When this kills a unit add a brood swarm to your hand)")
@@ -385,7 +402,13 @@ if owner = instance_find(objDeck,global.turn).id {
        show_message("Infernal Elemental (Fire): 5/3 - 4 [Combustive (If this dies deal damage equal to its damage to the enemy)]")
     }
     if cardID = 18 {
-       show_message("Sorcery: Raging Inferno (Fire): 4 - Target fire unit you own gains 2x its stats but dies at the start of your turn")
+       show_message("Sorcery: Raging Inferno (Fire): 3 - Target fire unit you own gains 2x its stats but dies at the start of your turn")
+    }
+    if cardID = 19 {
+       show_message("Glyph: Sanctuary (Earth): 3 - all units on your side gain +1 barrier")
+    }
+    if cardID = 20 {
+       show_message("Incantation: Sacrifice (Water): 3 - next person to invoke loses the top card of their deck")
     }
 
 

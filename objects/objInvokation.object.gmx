@@ -33,6 +33,8 @@ cardStatD = 0
 cardStatI = 0
 cardStatT = 1
 image_speed = 0
+log = "";
+inc = 0 //(1 = draw inc)
 </string>
           </argument>
         </arguments>
@@ -55,7 +57,8 @@ image_speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if remade.type = 1 {
+            <string>///Cancel Refund
+if remade.type = 1 {
    remade.owner.water += remade.cost
 }
 if remade.type = 2 {
@@ -90,38 +93,43 @@ if remade.type = 3 {
             <string>///Card Usages
 if casting = 0 {
    with instance_find(objDeck,global.turn) {
-       
        water += 1
    }
+   log += "Deck "+(string(global.turn)+ " Used droplet#")
 }
 if casting = 1 {
    with instance_find(objDeck,global.turn) {
        
        fire += 1
    }
+   log += "Deck "+(string(global.turn)+ " Used spark#")
 }
 if casting = 2 {
    with instance_find(objDeck,global.turn) {
        
        earth += 1
    }
+   log += "Deck "+(string(global.turn)+ " Used sprout#")
 }
 if casting = 3 {
    with instance_find(objDeck,global.turn) {
        
        water += 3
+   log += "Deck "+(string(global.turn)+ " Used torrent#")
    }
 }
 if casting = 4 {
    with instance_find(objDeck,global.turn) {
        
        fire += 3
+   log += "Deck "+(string(global.turn)+ " Used blaze#")
    }
 }
 if casting = 5 {
    with instance_find(objDeck,global.turn) {
        
        earth += 3
+   log += "Deck "+(string(global.turn)+ " Used Great oak#")
    }
 }
 
@@ -136,6 +144,7 @@ if casting = 7 {
         } else {
           fire += 2
         }
+   log += "Deck "+(string(global.turn)+ " Used flame#")
 
     }
 
@@ -151,6 +160,7 @@ if casting = 6 {
         }
 
     }
+    log += "Deck "+(string(global.turn)+ " Used downpour#")
 }
 
 if casting = 8 {
@@ -164,6 +174,7 @@ if casting = 8 {
         }
 
     }
+   log += "Deck "+(string(global.turn)+ " Used flowers#")
 
 }
 //CardStatT : 2 = fire, 1 = water, 3 = earth
@@ -173,6 +184,7 @@ if casting = 9 {
    cardStatD = 1
    cardStatI = 9
    cardStatT = 2
+   log += "Deck "+(string(global.turn)+ " Summoned flaming skull#")
 }
 if casting = 10 {
    global.placing = true
@@ -180,6 +192,7 @@ if casting = 10 {
    cardStatD = 1
    cardStatI = 10
    cardStatT = 3
+   log += "Deck "+(string(global.turn)+ " Summoned Woodland sprite#")
 }
 if casting = 11 {
    global.placing = true
@@ -187,6 +200,7 @@ if casting = 11 {
    cardStatD = 1
    cardStatI = 11
    cardStatT = 1
+   log += "Deck "+(string(global.turn)+ " Summoned Sea Gulper#")
 }
 if casting = 12 {
    global.placing = true
@@ -194,6 +208,7 @@ if casting = 12 {
    cardStatD = 3
    cardStatI = 12
    cardStatT = 2
+   log += "Deck "+(string(global.turn)+ " Summoned Lesser Fire E.#")
 }
 if casting = 13 {
    global.placing = true
@@ -201,6 +216,7 @@ if casting = 13 {
    cardStatD = 2
    cardStatI = 13
    cardStatT = 1
+   log += "Deck "+(string(global.turn)+ " Summoned Lesser Mind E.#")
 }
 if casting = 14 {
    global.placing = true
@@ -208,6 +224,7 @@ if casting = 14 {
    cardStatD = 2
    cardStatI = 14
    cardStatT = 3
+   log += "Deck "+(string(global.turn)+ " Summoned Jungle Weaver E.#")
 }
 if casting = 15 {
    global.placing = true
@@ -215,6 +232,7 @@ if casting = 15 {
    cardStatD = 1
    cardStatI = 15
    cardStatT = 3
+   log += "Deck "+(string(global.turn)+ " Summoned Brood Swarm#")
 }
 if casting = 16 {
    global.placing = true
@@ -222,6 +240,7 @@ if casting = 16 {
    cardStatD = 3
    cardStatI = 16
    cardStatT = 1
+   log += "Deck "+(string(global.turn)+ " Summoned Mana Wyrm#")
 }
 if casting = 17 {
    global.placing = true
@@ -229,15 +248,77 @@ if casting = 17 {
    cardStatD = 5
    cardStatI = 17
    cardStatT = 2
+   log += "Deck "+(string(global.turn)+ " Summoned Infernal E.#")
 }
 if casting = 18 {
    global.spell = true
    global.spellID = 18
+   log += "Deck "+(string(global.turn)+ " Cast S: Raging Inferno#")
 }
-
+if casting = 19 {
+   global.spell = true
+   global.spellID = 19
+   log += "Deck "+(string(global.turn)+ " Cast G: Sanctuary#")
+}
+if casting = 20 {
+   global.spell = true
+   global.spellID = 20
+   log += "Deck "+(string(global.turn)+ " Cast I: Sacrafice#")
+}
 casting = noone
 reminvoke -= 1
 image_index = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Instant Spells
+if global.spell = true {
+   if global.spellID = 19 {
+      if global.turn = 0 {
+         with (objFieldSpot) {
+              if y &gt; room_height/2 {
+                 barrier += 1
+              }
+         }
+      }
+      if global.turn = 1 {
+         with (objFieldSpot) {
+              if y &lt; room_height/2 {
+                 barrier += 1
+              }
+         }
+      
+      }
+      global.spell = false
+      global.spellID = 0
+   }
+   if global.spellID = 20 {
+      with (objInvokation) {
+           inc = 1
+      }
+   }
+      global.spell = false
+      global.spellID = 0
+}
 </string>
           </argument>
         </arguments>
@@ -347,6 +428,7 @@ if image_index != 2 {
 if image_index = 2 {
    draw_text(x+16,y,"Cancel?")
 }
+draw_text(6,100,log)
 </string>
           </argument>
         </arguments>

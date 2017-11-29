@@ -30,8 +30,8 @@ randomize()
 global.card = noone;
 global.turn = 2
 decktest = ds_stack_create()
-for(i=0;i&lt;30;i++) {
-    ds_stack_push(decktest,irandom_range(3,18)) //irandom_range(3,17)
+for(i=0;i&lt;40;i++) {
+    ds_stack_push(decktest,irandom_range(3,20)) //irandom_range(3,17)
 }
 /*
 deck1 = choose(0,1,2) //0 = water deck, 1 = fire deck, 2 = earth deck
@@ -383,8 +383,8 @@ draw_sprite_ext(sprTimer,0,182,177,turntime/(60*60),1,0,c_white,1)
        pile = instance_find(objDeck,0)
        pile.drawcount += 1
        with (pile) {
-            if ds_stack_empty(deck) = true {
-               hp -= 1
+            if ds_stack_size(deck) &lt; drawcount {
+               hp -= (1 * drawcount) - ds_stack_size(deck)
             }
        }
        audio_play_sound(snd_turnChange,10,false)
@@ -408,15 +408,15 @@ draw_sprite_ext(sprTimer,0,182,177,turntime/(60*60),1,0,c_white,1)
                }
             }
        }
-    } else if global.card = noone and objInvokation.casting = noone and global.placing = false and global.spell = false{
+    } else if global.card = noone and objInvokation.casting = noone and global.placing = false and global.spell = false {
       global.turn = 1
       turncount += 1
       turntime = 60*60
       pile = instance_find(objDeck,1)
       pile.drawcount += 1
       with (pile) {
-            if ds_stack_empty(deck) = true {
-               hp -= 1
+            if ds_stack_size(deck) &lt; drawcount {
+               hp -= (1 * drawcount) - ds_stack_size(deck)
             }
        }
 

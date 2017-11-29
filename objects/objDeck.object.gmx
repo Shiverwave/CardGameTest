@@ -40,11 +40,11 @@ var str = ini_read_string("deck", "0", "");
     ds_stack_read(deck, str);
     }
 ini_close();
-for(i=0;i&lt;30;i++) {
+for(i=0;i&lt;40;i++) {
     ds_list_add(shuffle,ds_stack_pop(deck))
 }
 ds_list_shuffle(shuffle)
-for(i=0;i&lt;30;i++) {
+for(i=0;i&lt;40;i++) {
    ds_stack_push(deck,ds_list_find_value(shuffle,i))
 }
 
@@ -120,7 +120,7 @@ drawcount = 5
           <argument>
             <kind>1</kind>
             <string>///Health
-hp = 35
+hp = 45
 hpc = hp
 </string>
           </argument>
@@ -325,10 +325,15 @@ if (stackcount &gt; 10 and stackcount &lt;= 20) {
   sprite_index = sprCardBack
   image_index = 1
 }
-if (stackcount &gt; 20) {
+if (stackcount &gt; 20 and stackcount &lt;= 30) {
   sprite_index = sprCardBack
   image_index = 2
 }
+if (stackcount &gt; 30) {
+  sprite_index = sprCardBack
+  image_index = 4
+}
+
 draw_self()
 draw_text(x-12,y-14,stackcount)
 if (drawcount &gt; 0 and active = true) {
